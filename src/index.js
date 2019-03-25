@@ -4,6 +4,7 @@ import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import './index.css'
 //
+import LandingPage from "./views/Auth/LandingPage"
 import Dashboard from "./views/Dashboard/Dashboard";
 import Announcement from "./views/Announcement/Announcement";
 import Grade from "./views/Result/Result";
@@ -15,7 +16,7 @@ const hist = createBrowserHistory();
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
-      <Route exact path="/" component={Dashboard} />
+      <Route exact path="/" component={LandingPage} />
       <Route path="/announce" component={Announcement} />
       <Route path="/result" component={Grade} />
       <Route path="/setting" component={Setting} />
