@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { CssBaseline, IconButton, Badge, Avatar, Grid } from "@material-ui/core";
+import { CssBaseline, IconButton, Badge, Avatar, Grid, Menu, MenuItem } from "@material-ui/core";
 import classNames from 'classnames'
 import Typography from "@material-ui/core/Typography";
 import Drawer from "@material-ui/core/Drawer";
@@ -172,10 +172,33 @@ const categories = [
 class MainAppBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = { archorEl: null };
   }
+  handleProfileMenuOpen = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+  handleMenuClose=()=>{
+    this.setState({anchorEl:null})
+  }
+
   render() {
-    const { classes } = this.props
+    const { anchorEl } = this.state;
+    const isMenuOpen = Boolean(anchorEl);
+    const { classes } = this.props;
+    const renderMenu = (
+      <Menu
+        anchorEl={anchorEl}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        open={isMenuOpen}
+        onClose={this.handleMenuClose}
+      >
+        <MenuItem onClick={this.handleMenuClose}>Personal Profile</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>Change Password</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>Sign Out</MenuItem>
+      </Menu>
+    );
+
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -195,13 +218,17 @@ class MainAppBar extends React.Component {
                   <NotificationsOutlined />
                 </Badge>
               </IconButton>
-              <IconButton color="primary">
+              <IconButton
+                color="primary"
+                aria-owns={isMenuOpen ? "material-appbar" : undefined}
+                aria-haspopup="true"
+                onClick={this.handleProfileMenuOpen}
+              >
                 <SettingsOutlined />
               </IconButton>
             </div>
           </Toolbar>
         </AppBar>
-
         {/* Sidebar Like Drawer */}
         <Drawer
           className={classes.drawer}
@@ -219,7 +246,7 @@ class MainAppBar extends React.Component {
               <Typography
                 className="class.welcome"
                 variant="h6"
-                 color="Secondary"
+                color="Secondary"
               >
                 {"Welcome"}
               </Typography>
@@ -260,8 +287,8 @@ class MainAppBar extends React.Component {
           </List>
           <div className={classes.toolbar} />
         </Drawer>
-
-        {/* Below Is Main Content */}
+      {renderMenu}     
+   {/* Below Is Main Content */}
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Typography variant="h4" gutterBottom component="h2">
