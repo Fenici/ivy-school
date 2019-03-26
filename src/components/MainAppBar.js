@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import {  CssBaseline, IconButton, Badge } from "@material-ui/core";
+import { CssBaseline, IconButton, Badge, Avatar, Grid } from "@material-ui/core";
 import classNames from 'classnames'
 import Typography from "@material-ui/core/Typography";
 import Drawer from "@material-ui/core/Drawer";
@@ -33,7 +33,7 @@ const styles = theme => ({
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
-    paddingTop: 150
+    paddingTop: 100
   },
 
   toolbarIcon: {
@@ -122,7 +122,7 @@ const styles = theme => ({
     justifyContent: "flex-end"
   },
   item: {
-    height:80,
+    height: 80,
     paddingTop: 4,
     paddingBottom: 4
     // color: "rgba(255, 255, 255, 0.7)"
@@ -143,26 +143,39 @@ const styles = theme => ({
       fontSize: theme.typography.fontSize
     }
   },
-  navIcon:{
-    color:"#fff"
+  navIcon: {
+    color: "#fff"
+  },
+  avatar: {
+     flexGrow: 1,
+    display: 'block'
+
+  },
+  avatarImage: {
+    marginLeft: 20,
+    marginRight: 15,
+  },
+  welcome:{
+    fontSize:'2.5rem '
   }
+
 });
 
 const categories = [
-  
-      { id: "Dashboard", icon: <TableChartOutlined />, active: true },
-      { id: "Grade", icon: <GradeOutlined /> },
-      { id: "Settings", icon: <SettingsOutlined /> },
-      { id: "SignIn", icon: <ExitToAppOutlined /> },
+
+  { id: "Dashboard", icon: <TableChartOutlined />, active: true },
+  { id: "Grade", icon: <GradeOutlined /> },
+  { id: "Settings", icon: <SettingsOutlined /> },
+  { id: "SignIn", icon: <ExitToAppOutlined /> },
 
 ];
 class MainAppBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {  }
+    this.state = {}
   }
-  render() { 
-    const {classes } = this.props
+  render() {
+    const { classes } = this.props
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -198,6 +211,26 @@ class MainAppBar extends React.Component {
           }}
         >
           <div className={classes.toolbar} />
+          <Grid container spacing={16}>
+            <Grid itemclassName={classes.avatar}>
+              <Avatar className={classes.avatarImage}>H</Avatar>
+            </Grid>
+            <Grid>
+              <Typography
+                className="class.welcome"
+                variant="h6"
+                 color="Secondary"
+              >
+                {"Welcome"}
+              </Typography>
+              <Typography className="class.name" color="Secondary">
+                {"Joe.Smith"}
+              </Typography>
+              <Typography className="class.role" color="Secondary">
+                {"Student"}
+              </Typography>
+            </Grid>
+          </Grid>
 
           <List>
             {categories.map(({ id: childId, icon, active }) => (
@@ -211,7 +244,9 @@ class MainAppBar extends React.Component {
                   active && classes.itemActiveItem
                 )}
               >
-                <ListItemIcon className={classes.navIcon}>{icon}</ListItemIcon>
+                <ListItemIcon className={classes.navIcon}>
+                  {icon}
+                </ListItemIcon>
                 <ListItemText
                   classes={{
                     primary: classes.itemPrimary,
@@ -237,7 +272,7 @@ class MainAppBar extends React.Component {
     );
   }
 }
- 
+
 
 
 MainAppBar.propTypes = {
