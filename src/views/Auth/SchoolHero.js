@@ -49,6 +49,8 @@ const styles = theme => ({
     marginTop: "15px",
     "&:hover": {
       // backgroundColor: "#649"
+      transform: "scale(1.2)",   
+    
     }
   },
   iconSize: {}
