@@ -4,41 +4,43 @@ import grey from "@material-ui/core/colors/grey";
 import red from "@material-ui/core/colors/red";
 
 const rawTheme = createMuiTheme({
-    palette: {
-        primary: {
-            ligth: "#914499",
-            main: "#649",
-            dark: "#444D99"
-        },
-        secondary: {
-            light: "#fff",
-            main: "#f2f2f2",
-            dark: "#659"
-        },
-        warning: {
-            main: "#ffc071",
-            dark: "#ffb25e"
-        },
-        
-        error: {
-            xLight: red[50],
-            main: red[500],
-            dark: red[700]
-        },
-        success: {
-            xLight: green[50],
-            dark: green[700]
-        }
+  palette: {
+    primary: {
+      ligth: "#914499",
+      main: "#649",
+      dark: "#444D99"
     },
-    typography: {
-        fontFamily: "'Nunito', sans-serif",
-        fontSize: 14,
-        fontWeightLight: 300, // Work Sans
-        fontWeightRegular: 400, // Work Sans
-        fontWeightMedium: 700, // Roboto Condensed
-        fontFamilySecondary: "'Nunito', sans-serif",
-        useNextVariants: true
+    secondary: {
+      light: "#fff",
+      main: "#f2f2f2",
+      dark: "#659"
+    },
+    av: "#f44336",
+
+    warning: {
+      main: "#ffc071",
+      dark: "#ffb25e"
+    },
+
+    error: {
+      xLight: red[50],
+      main: red[500],
+      dark: red[700]
+    },
+    success: {
+      xLight: green[50],
+      dark: green[700]
     }
+  },
+  typography: {
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: 18,
+    fontWeightLight: 300, // Work Sans
+    fontWeightRegular: 400, // Work Sans
+    fontWeightMedium: 700, // Roboto Condensed
+    fontFamilySecondary: "'Nunito', sans-serif",
+    useNextVariants: true
+  }
 });
 
 const fontHeader = {

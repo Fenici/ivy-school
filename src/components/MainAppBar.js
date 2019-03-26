@@ -2,15 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import {  CssBaseline, IconButton, Badge } from "@material-ui/core";
-
+import classNames from 'classnames'
 import Typography from "@material-ui/core/Typography";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MoreIcon from "@material-ui/icons/MoreVert";
+import NotificationsOutlined from "@material-ui/icons/NotificationsOutlined";
+import SettingsOutlined from "@material-ui/icons/SettingsOutlined";
+
+
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import TableChartOutlined from '@material-ui/icons/TableChartOutlined'
+import GradeOutlined from "@material-ui/icons/GradeOutlined";
+import ExitToAppOutlined from "@material-ui/icons/ExitToAppOutlined";
+
 
 import Ivy from '../assets/newLogo.png'
 
@@ -22,8 +32,10 @@ const styles = theme => ({
     backgroundColor: "#EFF3F6"
   },
   toolbar: {
-    paddingRight: 24 // keep right padding when drawer closed
+    paddingRight: 24, // keep right padding when drawer closed
+    paddingTop: 150
   },
+
   toolbarIcon: {
     display: "flex",
     alignItems: "center",
@@ -99,11 +111,51 @@ const styles = theme => ({
     height: 38,
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
-   
+    alignItems: "center"
   },
+  left: {
+    flex: 1
+  },
+  right: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "flex-end"
+  },
+  item: {
+    height:80,
+    paddingTop: 4,
+    paddingBottom: 4
+    // color: "rgba(255, 255, 255, 0.7)"
+  },
+  itemActionable: {
+    "&:hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.08)"
+    }
+  },
+  itemActiveItem: {
+    color: "#4fc3f7"
+  },
+  itemPrimary: {
+    color: "#fff",
+    fontWeight: theme.typography.fontWeightLight,
+    fontSize: theme.typography.fontSize,
+    "&$textDense": {
+      fontSize: theme.typography.fontSize
+    }
+  },
+  navIcon:{
+    color:"#fff"
+  }
 });
 
+const categories = [
+  
+      { id: "Dashboard", icon: <TableChartOutlined />, active: true },
+      { id: "Grade", icon: <GradeOutlined /> },
+      { id: "Settings", icon: <SettingsOutlined /> },
+      { id: "SignIn", icon: <ExitToAppOutlined /> },
+
+];
 class MainAppBar extends React.Component {
   constructor(props) {
     super(props);
@@ -111,60 +163,78 @@ class MainAppBar extends React.Component {
   }
   render() { 
     const {classes } = this.props
-    return (<div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar} color="#fff">
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            <img src={Ivy} className={classes.icon} alt="school-icon"></img>
-              </Typography>
-          <div className={classes.sectionDesktop}>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-              
-                <MailIcon />
-                
-              </Badge>
-            </IconButton>
-            <IconButton color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              // aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-              aria-haspopup="true"
-              onClick={this.handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-              <MoreIcon />
-            </IconButton>
-          </div>
-
-        </Toolbar>
-      </AppBar>
-
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper
-        }}
-      >
-        <div className={classes.toolbar} />
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Typography variant="h4" gutterBottom component="h2">
-          Main Content
+    return (
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar position="fixed" className={classes.appBar} color="#fff">
+          <Toolbar>
+            <Typography variant="h6" color="inherit" noWrap>
+              <img src={Ivy} className={classes.icon} alt="school-icon" />
             </Typography>
-      </main>
-    </div> );
+
+            <div className={classes.left} />
+            {/* this can be dynamic change with Route  */}
+            <h2>{"Dashboard"}</h2>
+
+            <div className={classes.right}>
+              <IconButton color="primary">
+                <Badge badgeContent={7} color="error">
+                  <NotificationsOutlined />
+                </Badge>
+              </IconButton>
+              <IconButton color="primary">
+                <SettingsOutlined />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+
+        {/* Sidebar Like Drawer */}
+        <Drawer
+          className={classes.drawer}
+          variant="permanent"
+          classes={{
+            paper: classes.drawerPaper
+          }}
+        >
+          <div className={classes.toolbar} />
+
+          <List>
+            {categories.map(({ id: childId, icon, active }) => (
+              <ListItem
+                button
+                dense
+                key={childId}
+                className={classNames(
+                  classes.item,
+                  classes.itemActionable,
+                  active && classes.itemActiveItem
+                )}
+              >
+                <ListItemIcon className={classes.navIcon}>{icon}</ListItemIcon>
+                <ListItemText
+                  classes={{
+                    primary: classes.itemPrimary,
+                    textDense: classes.textDense
+                  }}
+                >
+                  {childId}
+                </ListItemText>
+              </ListItem>
+            ))}
+          </List>
+          <div className={classes.toolbar} />
+        </Drawer>
+
+        {/* Below Is Main Content */}
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          <Typography variant="h4" gutterBottom component="h2">
+            Main Content
+          </Typography>
+        </main>
+      </div>
+    );
   }
 }
  
