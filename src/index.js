@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import './index.css'
 //
 import LandingPage from "./views/Auth/LandingPage"
@@ -17,11 +17,11 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
       <Route exact path="/" component={LandingPage} />
+      <Route exact path="/dashboard" component={Dashboard} />
       <Route path="/announce" component={Announcement} />
       <Route path="/result" component={Grade} />
       <Route path="/setting" component={Setting} />
       <Route component={NoMatch} />
-
     </Switch>
   </Router>,
   document.getElementById("root")

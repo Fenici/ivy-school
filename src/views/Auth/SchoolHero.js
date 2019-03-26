@@ -73,7 +73,7 @@ function SchoolHero(props) {
         variant="h5"
         className={classes.h5}
       >
-        Ivy School Spring Semester Start Enroll Now
+        Ivy School Spring Semester Start Enrolling Now
       </Typography>
       <Button
         color="secondary"
