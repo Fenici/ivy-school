@@ -5,6 +5,9 @@ import { Router, Route, Switch, Redirect } from "react-router-dom";
 import './index.css'
 //
 import LandingPage from "./views/Auth/LandingPage"
+import LogIn from "./views/Login/LogIn";
+import SignUp from "./views/Login/SignUp";
+
 import Dashboard from "./views/Dashboard/Dashboard";
 import Announcement from "./views/Announcement/Announcement";
 import Grade from "./views/Result/Result";
@@ -17,6 +20,9 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
       <Route exact path="/" component={LandingPage} />
+      <Route path="/login" component={LogIn} />
+      <Route path="/signup" component={SignUp} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route path="/announce" component={Announcement} />
       <Route path="/result" component={Grade} />
       <Route path="/setting" component={Setting} />

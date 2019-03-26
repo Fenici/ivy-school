@@ -60,7 +60,7 @@ function LpAppBar(props) {
               variant="h6"
               underline="none"
               className={classes.rightLink}
-              href="#"
+              href="/login"
             >
               {"Sign In"}
             </Link>
@@ -69,7 +69,7 @@ function LpAppBar(props) {
               variant="h6"
               underline="none"
               className={classNames(classes.rightLink, classes.linkSecondary)}
-              href="#"
+              href="/signup"
             >
               {"Sign Up"}
             </Link>
