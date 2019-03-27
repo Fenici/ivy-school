@@ -7,7 +7,9 @@ const styles = theme => ({
   margin: {
     margin: theme.spacing.unit,
     color: "#fff",
-    backgroundColor: "#649"
+    backgroundColor: "#649",
+    fontSize: 12,
+    fontWeight: 300
   },
 
   extendedIcon: {
@@ -23,7 +25,7 @@ class Button extends Component {
       <Fab
         variant={variant}
         size={size}
-        color="649"
+        color="primary"
         aria-label="Redirect"
         className={classes.margin}
       >

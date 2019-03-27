@@ -1,8 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { CssBaseline, IconButton, Badge, Avatar, Grid, Menu, MenuItem } from "@material-ui/core";
-import classNames from 'classnames'
+import { NavLink } from "react-router-dom";
+
+import {
+  CssBaseline,
+  IconButton,
+  Badge,
+  Avatar,
+  Grid,
+  Menu,
+  MenuItem
+} from "@material-ui/core";
+import classNames from "classnames";
 import Typography from "@material-ui/core/Typography";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
@@ -11,18 +21,18 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsOutlined from "@material-ui/icons/NotificationsOutlined";
 import SettingsOutlined from "@material-ui/icons/SettingsOutlined";
 
-
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
-import TableChartOutlined from '@material-ui/icons/TableChartOutlined'
+import TableChartOutlined from "@material-ui/icons/TableChartOutlined";
 import GradeOutlined from "@material-ui/icons/GradeOutlined";
 import ExitToAppOutlined from "@material-ui/icons/ExitToAppOutlined";
 
-
-import Ivy from '../assets/newLogo.png'
+import Ivy from "../assets/newLogo.png";
+import CourseCard from "./CourseCard";
+import Heading from "./Heading";
 
 const drawerWidth = 240;
 
@@ -48,7 +58,8 @@ const styles = theme => ({
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    })
+    }),
+    backgroundColor:'#fff'
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -139,36 +150,38 @@ const styles = theme => ({
     color: "#fff",
     fontWeight: theme.typography.fontWeightLight,
     fontSize: theme.typography.fontSize,
-    "&$textDense": {
-      fontSize: theme.typography.fontSize
-    }
+    // "&$textDense": {
+    //   fontSize: theme.typography.fontSize
+    // }
   },
   navIcon: {
     color: "#fff"
   },
   avatar: {
-     flexGrow: 1,
-    display: 'block'
-
+    flexGrow: 1,
+    display: "block"
   },
   avatarImage: {
     marginLeft: 20,
-    marginRight: 15,
+    marginRight: 15
   },
-  welcome:{
-    fontSize:'2.5rem '
-  }
+  info:{
+    flexGrow:2
+  },
+  welcome: {
+    fontSize: "2.5rem "
+  },
+
 
 });
 
 const categories = [
-
-  { id: "Dashboard", icon: <TableChartOutlined />, active: true },
-  { id: "Grade", icon: <GradeOutlined /> },
-  { id: "Settings", icon: <SettingsOutlined /> },
-  { id: "SignIn", icon: <ExitToAppOutlined /> },
-
+  { id: "Dashboard", icon: <TableChartOutlined />, active: true ,path:"/dashboard"},
+  { id: "Grade", icon: <GradeOutlined /> ,path:"/grade"},
+  { id: "Settings", icon: <SettingsOutlined /> ,path:"/setting"},
+  { id: "SignIn", icon: <ExitToAppOutlined/>, path:"/signin" }
 ];
+
 class MainAppBar extends React.Component {
   constructor(props) {
     super(props);
@@ -177,14 +190,16 @@ class MainAppBar extends React.Component {
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
-  handleMenuClose=()=>{
-    this.setState({anchorEl:null})
-  }
+  handleMenuClose = () => {
+    this.setState({ anchorEl: null });
+  };
 
   render() {
     const { anchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
     const { classes } = this.props;
+
+    //setting dropdown menu
     const renderMenu = (
       <Menu
         anchorEl={anchorEl}
@@ -202,7 +217,7 @@ class MainAppBar extends React.Component {
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <AppBar position="fixed" className={classes.appBar} color="#fff">
+        <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" color="inherit" noWrap>
               <img src={Ivy} className={classes.icon} alt="school-icon" />
@@ -239,68 +254,70 @@ class MainAppBar extends React.Component {
         >
           <div className={classes.toolbar} />
           <Grid container spacing={16}>
-            <Grid itemclassName={classes.avatar}>
+            <Grid item className={classes.avatar}>
               <Avatar className={classes.avatarImage}>H</Avatar>
             </Grid>
-            <Grid>
+            <Grid className={classes.info}>
               <Typography
                 className="class.welcome"
                 variant="h6"
-                color="Secondary"
+                color="secondary"
               >
                 {"Welcome"}
               </Typography>
-              <Typography className="class.name" color="Secondary">
+              <Typography className="class.name" color="secondary">
                 {"Joe.Smith"}
               </Typography>
-              <Typography className="class.role" color="Secondary">
+              <Typography className="class.role" color="secondary">
                 {"Student"}
               </Typography>
             </Grid>
           </Grid>
 
           <List>
-            {categories.map(({ id: childId, icon, active }) => (
-              <ListItem
-                button
-                dense
-                key={childId}
-                className={classNames(
-                  classes.item,
-                  classes.itemActionable,
-                  active && classes.itemActiveItem
-                )}
-              >
-                <ListItemIcon className={classes.navIcon}>
-                  {icon}
-                </ListItemIcon>
-                <ListItemText
-                  classes={{
-                    primary: classes.itemPrimary,
-                    textDense: classes.textDense
-                  }}
+            {categories.map(({ id: childId, icon, active, path }) => (
+              <NavLink to={path} key={childId}>
+                <ListItem
+                  button
+                  dense
+                  key={childId}
+                  className={classNames(
+                    classes.item,
+                    classes.itemActionable,
+                    active && classes.itemActiveItem
+                  )}
                 >
-                  {childId}
-                </ListItemText>
-              </ListItem>
+                  <ListItemIcon className={classes.navIcon}>
+                    {icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    classes={{
+                      primary: classes.itemPrimary
+                      // textDense: classes.textDense
+                    }}
+                  >
+                    {childId}
+                  </ListItemText>
+                </ListItem>
+              </NavLink>
             ))}
           </List>
+
           <div className={classes.toolbar} />
         </Drawer>
-      {renderMenu}     
-   {/* Below Is Main Content */}
+        {renderMenu}
+        {/* Below Is Main Content */}
+
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
-          <Typography variant="h4" gutterBottom component="h2">
-            Main Content
-          </Typography>
+          <Heading headings="Course"></Heading>
+
+          <CourseCard />
         </main>
       </div>
     );
   }
 }
-
-
 
 MainAppBar.propTypes = {
   classes: PropTypes.object.isRequired
