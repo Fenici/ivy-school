@@ -10,3 +10,9 @@ Create Date:
 6. Teacher be able to see each different assignment which submitted by student 
 7. Teacher be able to give out annoucement to their class 
 
+##Objective: Deliver a teaching management system which includes:
+
+* assigns students to the specific class
+* supports one classroom to host one class at a specific period
+* assigns one teacher to be responsible for one classroom
+* submit and reviews assignments
