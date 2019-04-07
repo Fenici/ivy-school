@@ -1,0 +1,258 @@
+openapi: 3.0.0
+info:
+  title: "Ivy School Management System "
+  description: "This is school management system"
+  version: "1.0.0"
+  contact:
+    name: Axios Team
+    email: axios@example.com
+    url: https://axios.com/
+tags:
+
+  - name: "admin"
+    description: Admin manage everything (CRUD) to student teacher and course 
+  - name: "teacher" 
+    description:  Teacher be able to crud on assignments and students
+  - name: "student"
+    description: Students be able to select course , (CRUD) their assignment 
+  - name: "course"
+    description: Contain the relevent info about the course , 1. Admin assign to teacher 2. student enroll to course 3. contain assignment info
+  - name: "assignment"
+    description: School assignment API access by teacher and student , teacher could CURD , student could read and upload/update.
+
+paths:
+  /admin:
+    get:
+      summary: 
+      description: 
+      tags:
+        - 'admin'   
+    post:
+      summary: 
+      description: 
+      tags:
+        - 'admin'  
+    put:
+      summary: 
+      description: 
+      tags:
+        - 'admin'  
+    delete:
+      summary: 
+      description: 
+      tags:
+        - 'admin'   
+
+  /teacther:
+    get:
+      summary: Get teacher details 
+      description: Get a teacher detail / profile...
+      tags: 
+      - 'teacher'
+    post:
+      summary: post teacher details > this should be done by admin
+      description: na...
+      tags: 
+      - 'teacher'
+    put:
+      summary: 
+      description: 
+      tags:
+        - 'teacher'
+    delete:
+      summary: 
+      description: 
+      tags:
+        - 'teacher'
+  /student:
+    get:
+      summary: 
+      description: 
+      tags:
+        - 'student'     
+    post:
+      summary: 
+      description: 
+      tags:
+        - 'student'       
+    put:
+      summary: 
+      description: 
+      tags:
+        - 'student'   
+    delete:
+      summary: 
+      description: 
+      tags:
+        - 'student'   
+  /course:
+    get:
+      summary: 
+      description: 
+      tags:
+        - 'course'   
+  /course/:id:
+    get:
+      summary: 
+      description: 
+      tags:
+        - 'course' 
+    post:
+      summary: 
+      description: 
+      tags:
+        - 'course'  
+    put:
+      summary: 
+      description: 
+      tags:
+        - 'course'  
+
+    delete:
+      summary: 
+      description: 
+      tags:
+        - 'course'  
+  /assignment:
+    post:
+      summary: Create a assignment.
+      description: Create a assignment...
+      tags:
+        - 'assignment'
+      responses:
+        "201": # status code
+          description: A assignment.
+          content:
+            application/json:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                title:
+                  type: string
+                content:
+                  type: string
+                criteria:
+                  type: string
+                belongTo:
+                  type: string
+                details: 
+                  type: object
+  /assignment/{id}:
+    get:
+      summary: Returns a assignment.
+      description: Returns a assignment...
+      tags:
+        - 'assignment'
+      parameters:
+        - name: id
+          in: path
+          description: id of the assigment.
+          schema:
+            type: string
+      responses:
+        "200": # status code
+          description: A assignment.
+          content:
+            application/json:
+              schema:
+                type: object
+        "400": # status code
+          description: Invalid id.
+          content:
+            application/json:
+              schema:
+                type: object
+        "404": # status code
+          description: not found.
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      summary: delete a assignment.
+      description: delete a assignment...
+      tags:
+        - 'assignment'
+      parameters:
+        - name: id
+          in: path
+          description: id of the assigment.
+          schema:
+            type: string
+      responses:
+        "200": # status code
+          description: A assignment.
+          content:
+            application/json:
+              schema:
+                type: object
+        "400": # status code
+          description: Invalid id.
+          content:
+            application/json:
+              schema:
+                type: object
+        "404": # status code
+          description: not found.
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      summary: update a assignment.
+      description: update a assignment...
+      tags:
+        - 'assignment'
+      parameters:
+        - name: id
+          in: path
+          description: id of the assigment.
+          schema:
+            type: string
+      responses:
+        "400": # status code
+          description: invalid id.
+          content:
+            application/json:
+              schema:
+                type: object
+        "200": # status code
+          description: A assignment.
+          content:
+            application/json:
+              schema:
+                type: object
+        "201": # status code
+          description: A assignment.
+          content:
+            application/json:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                title:
+                  type: string
+                content:
+                  type: string
+                criteria:
+                  type: string
+                belongTo:
+                  type: string
+                details: 
+                  type: object
+  
+  
+  

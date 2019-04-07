@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../../assets/newLogo.png";
-
+// import {Link} from 'react-router-dom'
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActions from "@material-ui/core/CardActions";
@@ -13,7 +13,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import purple from "@material-ui/core/colors/purple";
 import Button from "../../components/LpButton";
-import { Typography, Link } from "@material-ui/core";
+import { Typography,Link} from "@material-ui/core";
 
 const styles = theme => ({
   card: {
@@ -139,23 +139,29 @@ class LogIn extends React.Component {
           </div>
         </CardContent>
         <CardActions className={classes.actions}>
-          <Button
-            className={classes.button}
-            color="secondary"
-            variant="contained"
-            size="small"
-          >
-            Login
-          </Button>
-          <Button
-            className={classes.button}
-            color="secondary"
-            variant="contained"
-            size="small"
-          >
-            Sign Up
-          </Button>
+          <Link href={"/Dashboard"}>
+            <Button
+              className={classes.button}
+              color="secondary"
+              variant="contained"
+              size="small"
+            >
+              Login
+            </Button>
+          </Link>
+
+          <Link href={"/signup"}>
+            <Button
+              className={classes.button}
+              color="secondary"
+              variant="contained"
+              size="small"
+            >
+              Sign Up
+            </Button>
+          </Link>
         </CardActions>
+
         <br />
         <Link className={classes.issue}>Forgot Password?</Link>
         <CardMedia className={classes.media} title="logo" image={Logo} />

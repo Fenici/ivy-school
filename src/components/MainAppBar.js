@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { NavLink } from "react-router-dom";
-
+import Routes from '../Routes.jsx'
 import {
   CssBaseline,
   IconButton,
@@ -12,6 +12,7 @@ import {
   Menu,
   MenuItem
 } from "@material-ui/core";
+
 import classNames from "classnames";
 import Typography from "@material-ui/core/Typography";
 import Drawer from "@material-ui/core/Drawer";
@@ -175,12 +176,12 @@ const styles = theme => ({
 
 });
 
-const categories = [
-  { id: "Dashboard", icon: <TableChartOutlined />, active: true ,path:"/dashboard"},
-  { id: "Grade", icon: <GradeOutlined /> ,path:"/grade"},
-  { id: "Settings", icon: <SettingsOutlined /> ,path:"/setting"},
-  { id: "SignIn", icon: <ExitToAppOutlined/>, path:"/signin" }
-];
+// const categories = [
+//   { id: "Dashboard", icon: <TableChartOutlined />, active: true ,path:"/dashboard"},
+//   { id: "Grade", icon: <GradeOutlined /> ,path:"/grade"},
+//   { id: "Settings", icon: <SettingsOutlined /> ,path:"/setting"},
+//   { id: "SignIn", icon: <ExitToAppOutlined/>, path:"/signin" }
+// ];
 
 class MainAppBar extends React.Component {
   constructor(props) {
@@ -210,10 +211,14 @@ class MainAppBar extends React.Component {
       >
         <MenuItem onClick={this.handleMenuClose}>Personal Profile</MenuItem>
         <MenuItem onClick={this.handleMenuClose}>Change Password</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>Sign Out</MenuItem>
+        <NavLink to="/">
+          {" "}
+          <MenuItem onClick={this.handleMenuClose}>Sign Out</MenuItem>
+        </NavLink>
       </Menu>
     );
 
+    
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -275,7 +280,7 @@ class MainAppBar extends React.Component {
           </Grid>
 
           <List>
-            {categories.map(({ id: childId, icon, active, path }) => (
+            {Routes.map(({ id: childId, icon, active, path }) => (
               <NavLink to={path} key={childId}>
                 <ListItem
                   button
@@ -310,9 +315,50 @@ class MainAppBar extends React.Component {
 
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
-          <Heading headings="Course"></Heading>
+          <Heading headings="Course" />
 
-          <CourseCard />
+                    {/* this can be change to mapping */}
+          <div className="classes.gridRoot">
+            <Grid container spacing={8}>
+              <Grid item xs>
+                <CourseCard
+                  courseTitle={"Programming 101"}
+                  courseContent={
+                    "This is a fundamental course on programming."
+                  }
+                  materialLink={"#"}
+                  submissionLink={"#"}
+                  assignmentLink={"#"}
+                />
+              </Grid>
+
+              <Grid item xs >
+
+              <CourseCard
+                courseTitle={"Programming 201"}
+                courseContent={
+                  "This is a fundamental course on programming."
+                }
+                materialLink={"#"}
+                submissionLink={"#"}
+                assignmentLink={"#"}
+              />
+
+              </Grid>
+              <Grid item xs >
+
+              <CourseCard
+                courseTitle={"Programming 301"}
+                courseContent={
+                  "This is a fundamental course on programming."
+                }
+                materialLink={"#"}
+                submissionLink={"#"}
+                assignmentLink={"#"}
+              />
+              </Grid>
+            </Grid>
+          </div>
         </main>
       </div>
     );

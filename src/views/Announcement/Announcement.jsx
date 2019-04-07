@@ -6,7 +6,13 @@ class Announcement extends Component {
     this.state = {};
   }
   render() {
-    return <div>Announcement</div>;
+    return (
+      <div>
+        <h2>
+          Teacher Announcement on the course to student , student read only{" "}
+        </h2>
+      </div>
+    );
   }
 }
 

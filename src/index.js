@@ -14,6 +14,7 @@ import Grade from "./views/Result/Result";
 import Setting from "./views/Setting/Setting"
 import NoMatch from "./views/NotMatch/NoMatch"
 
+
 const hist = createBrowserHistory();
 
 ReactDOM.render(
@@ -27,6 +28,7 @@ ReactDOM.render(
       <Route path="/announce" component={Announcement} />
       <Route path="/result" component={Grade} />
       <Route path="/setting" component={Setting} />
+
       <Route component={NoMatch} />
     </Switch>
   </Router>,

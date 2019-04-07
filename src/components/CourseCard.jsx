@@ -8,7 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "../components/Button";
 import Typography from "@material-ui/core/Typography";
-import { CardHeader, Dialog } from "@material-ui/core";
+import { CardHeader, Dialog, Link } from "@material-ui/core";
 import Dialogs from "./Dialogs";
 
 const styles = theme => ({
@@ -38,7 +38,14 @@ class CourseCard extends Component {
     this.state = {};
   }
   render() {
-    const { classes } = this.props;
+    const {
+      classes,
+      courseTitle,
+      courseContent,
+      materialLink,
+      submissionLink,
+      assignmentLink
+    } = this.props;
 
     return (
       <Card className={classes.card}>
@@ -46,7 +53,7 @@ class CourseCard extends Component {
           classes={{
             title: classes.title
           }}
-          title="Course Name"
+          title={courseTitle}
           className={classes.cardHeader}
         />
 
@@ -56,31 +63,36 @@ class CourseCard extends Component {
               Course Desciption
             </Typography>
             <Typography component="p">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica...{" "}
-              <Dialogs buttonNames="More Info" />
+              {courseContent} <Dialogs buttonNames="More Info" />
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions className={classes.btCenter}>
-          <Button
-            variant="extended"
-            size="small"
-            name="Material"
-            className={classes.dbButton}
-          />
-          <Button
-            variant="extended"
-            size="small"
-            name="Submission"
-            className={classes.dbButton}
-          />
-          <Button
-            variant="extended"
-            size="small"
-            name="Assignment"
-            className={classes.dbButton}
-          />
+          <Link href={materialLink}>
+            <Button
+              variant="extended"
+              size="small"
+              name="Material"
+              className={classes.dbButton}
+            />
+          </Link>
+
+          <Link href={submissionLink}>
+            <Button
+              variant="extended"
+              size="small"
+              name="Submission"
+              className={classes.dbButton}
+            />
+          </Link>
+          <Link href={assignmentLink}>
+            <Button
+              variant="extended"
+              size="small"
+              name="Assignment"
+              className={classes.dbButton}
+            />
+          </Link>
         </CardActions>
       </Card>
     );
