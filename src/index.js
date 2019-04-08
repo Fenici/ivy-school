@@ -13,11 +13,15 @@ import Announcement from "./views/Announcement/Announcement";
 import Grade from "./views/Result/Result";
 import Setting from "./views/Setting/Setting"
 import NoMatch from "./views/NotMatch/NoMatch"
+import UserProfile from "./views/UserProfile/UserProfile";
+import MainAppBar from "./components/MainAppBar";
 
 
 const hist = createBrowserHistory();
 
 ReactDOM.render(
+
+
   <Router history={hist}>
     <Switch>
       <Route exact path="/" component={LandingPage} />
@@ -26,6 +30,7 @@ ReactDOM.render(
       <Route path="/signup" component={SignUp} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/announce" component={Announcement} />
+      <Route path="/profile" component={ UserProfile } />
       <Route path="/result" component={Grade} />
       <Route path="/setting" component={Setting} />
 

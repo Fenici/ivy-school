@@ -209,7 +209,7 @@ class MainAppBar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>Personal Profile</MenuItem>
+       <NavLink to='/profile'> <MenuItem onClick={this.handleMenuClose}>Personal Profile</MenuItem></NavLink>
         <MenuItem onClick={this.handleMenuClose}>Change Password</MenuItem>
         <NavLink to="/">
           {" "}
@@ -349,6 +349,18 @@ class MainAppBar extends React.Component {
 
               <CourseCard
                 courseTitle={"Programming 301"}
+                courseContent={
+                  "This is a fundamental course on programming."
+                }
+                materialLink={"#"}
+                submissionLink={"#"}
+                assignmentLink={"#"}
+              />
+              </Grid>
+              <Grid item xs >
+
+              <CourseCard
+                courseTitle={"Programming 401"}
                 courseContent={
                   "This is a fundamental course on programming."
                 }

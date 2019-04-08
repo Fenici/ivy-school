@@ -9,7 +9,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "../components/Button";
 import Typography from "@material-ui/core/Typography";
 import { CardHeader, Dialog, Link } from "@material-ui/core";
-import Dialogs from "./Dialogs";
+// import Dialogs from "./Dialogs";
 
 const styles = theme => ({
   card: {
@@ -63,7 +63,8 @@ class CourseCard extends Component {
               Course Desciption
             </Typography>
             <Typography component="p">
-              {courseContent} <Dialogs buttonNames="More Info" />
+              {courseContent}
+              {/* <Dialogs buttonNames="More Info" /> */}
             </Typography>
           </CardContent>
         </CardActionArea>

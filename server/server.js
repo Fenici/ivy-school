@@ -21,14 +21,14 @@ db.once('open',function () {
     Express create server
  */
 const app = express();
-const port = 3001;
+const port = 8080;
 
 //app.get(path, callback [, callback ...])
 
 app.get("/", (req, res) => res.send("Hello World!"));
 
 //open api setup 
-const nativeObject = YAML.load("api.yaml");
+const nativeObject = YAML.load("restfulapi.yaml");
 
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(nativeObject));
 
