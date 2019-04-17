@@ -1,75 +1,50 @@
 #Ivy School Management System
-Create Date:
+##System Logic
 
-## Available Scripts
+1.	Admin’s purview：
 
-In the project directory, you can run:
+	Add/remove all accounts
 
-### `npm start`
+	Access all accounts’ detail
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+	Access all users’ assigned/chosen classes, solve any problem in relation to class timetable clash, or setting max. class size
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+	Add/Remove/Edit Courses & Assignments & Announcements (supervising/censuring any inappropriate content, i.e. delete posts when students share their code on the announcement/discussion) 
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2.	Teachers’ purview:
 
-### `npm run build`
+	Access to assigned students’ submission status, & Grade/comment/return assignments
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+	Add, Edit, Delete assignment items.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+	Post announcements.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+	Post course-related materials.
 
-### `npm run eject`
+	Access to the number of students enrolled in one’s assigned class (view only).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3.	Students’ purview:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+	Choose preferred class (not a guarantee)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+	Access to all materials/grades/assignments (view only)
 
-## Learn More
+	Submit Assignments
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+	Reply/Comment on announcements
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+##Objective: Deliver a teaching management system which includes:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+•	assigns students to the specific class
 
-### Analyzing the Bundle Size
+•	supports one classroom to host one class at a specific period
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+•	assigns one teacher to be responsible for one classroom
 
-### Making a Progressive Web App
+•	submit and review assignments
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+•	users to manage their profiles
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-# xx
-
-# ivy-school
-
-# ivy-school
